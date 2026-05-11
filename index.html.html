@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Singapore & Malaysia 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f9f5ef;
+    --sand: #e8dfd0;
+    --warm-brown: #8b6f47;
+    --deep-brown: #3d2b1a;
+    --forest: #2d4a3e;
+    --forest-light: #3d6b59;
+    --coral: #c4614a;
+    --gold: #c4952a;
+    --sky: #4a7fa5;
+    --text: #2a1f14;
+    --muted: #7a6550;
+    --card-bg: #ffffff;
+    --border: #ddd4c5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--deep-brown);
+    padding: 56px 40px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-inner { position: relative; max-width: 900px; margin: 0 auto; }
+  .hero-flags { font-size: 32px; letter-spacing: 6px; margin-bottom: 16px; }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    color: var(--cream);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .hero-sub {
+    color: var(--sand);
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    margin-bottom: 32px;
+  }
+  .hero-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+  .hero-pill {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--cream);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  /* NAV TABS */
+  .nav-wrap {
+    background: var(--deep-brown);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 0 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-tabs { display: flex; gap: 0; max-width: 900px; margin: 0 auto; overflow-x: auto; }
+  .nav-tab {
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 14px 18px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: all 0.2s;
+    background: none;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+  }
+  .nav-tab:hover { color: rgba(255,255,255,0.8); }
+  .nav-tab.active { color: var(--cream); border-bottom-color: var(--gold); }
+
+  /* MAIN */
+  .main { max-width: 900px; margin: 0 auto; padding: 32px 40px 60px; }
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* SECTION TITLE */
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--deep-brown);
+    margin-bottom: 24px;
+  }
+
+  /* OVERVIEW GRID */
+  .overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 32px; }
+  .stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .stat-value { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--deep-brown); font-weight: 600; }
+  .stat-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+  /* FLIGHT CARDS */
+  .flights-grid { display: grid; gap: 12px; margin-bottom: 32px; }
+  .flight-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .flight-icon { font-size: 20px; flex-shrink: 0; }
+  .flight-route { font-weight: 500; font-size: 14px; color: var(--deep-brown); }
+  .flight-detail { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .flight-badge {
+    margin-left: auto;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+  .badge-done { background: #e8f5e9; color: #2e7d32; }
+  .badge-pending { background: #fff3e0; color: #e65100; }
+
+  /* COST TABLE */
+  .cost-table { width: 100%; border-collapse: collapse; margin-bottom: 32px; }
+  .cost-table th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); padding: 8px 12px; border-bottom: 1px solid var(--border); }
+  .cost-table td { padding: 12px; border-bottom: 1px solid var(--border); font-size: 14px; vertical-align: top; }
+  .cost-table tr:last-child td { border-bottom: none; }
+  .cost-table .cat { font-weight: 500; color: var(--deep-brown); }
+  .cost-table .amount { font-family: 'Playfair Display', serif; font-size: 15px; color: var(--forest); }
+  .cost-table .tbd { color: var(--muted); font-style: italic; font-size: 13px; }
+  .cost-total { background: var(--deep-brown); color: var(--cream); border-radius: 10px; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; }
+  .cost-total-label { font-size: 13px; opacity: 0.7; }
+  .cost-total-val { font-family: 'Playfair Display', serif; font-size: 22px; }
+
+  /* DESTINATION SEGMENTS */
+  .dest-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .dest-card {
+    border-radius: 12px;
+    padding: 18px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+  .dest-card:hover { transform: translateY(-2px); }
+  .dest-card.sg { background: var(--sky); }
+  .dest-card.pi { background: var(--forest); }
+  .dest-card.kl { background: var(--coral); }
+  .dest-flag { font-size: 22px; margin-bottom: 8px; }
+  .dest-name { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; }
+  .dest-dates { font-size: 12px; opacity: 0.8; margin-top: 4px; }
+  .dest-nights { font-size: 11px; opacity: 0.7; margin-top: 2px; }
+
+  /* ITINERARY */
+  .day-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .day-header {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .day-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 500;
+    flex-shrink: 0;
+    color: white;
+  }
+  .day-num.sg { background: var(--sky); }
+  .day-num.pi { background: var(--forest); }
+  .day-num.kl { background: var(--coral); }
+  .day-num.transit { background: var(--warm-brown); }
+  .day-title { font-weight: 500; font-size: 15px; color: var(--deep-brown); }
+  .day-date { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .day-toggle { margin-left: auto; color: var(--muted); font-size: 18px; transition: transform 0.2s; }
+  .day-card.open .day-toggle { transform: rotate(180deg); }
+  .day-body { display: none; padding: 0 20px 20px; border-top: 1px solid var(--border); }
+  .day-card.open .day-body { display: block; }
+
+  .day-items { list-style: none; margin-top: 16px; }
+  .day-item { display: flex; gap: 12px; margin-bottom: 12px; font-size: 14px; line-height: 1.5; }
+  .day-item-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--warm-brown);
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+  .day-item-dot.warn { background: var(--coral); }
+  .day-item-dot.tip { background: var(--gold); }
+  .day-item-dot.free { background: var(--forest); }
+
+  .warn-tag {
+    display: inline-block;
+    background: #fef3cd;
+    color: #856404;
+    font-size: 11px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-weight: 500;
+    margin-right: 4px;
+  }
+  .tip-tag {
+    display: inline-block;
+    background: #e8f4fd;
+    color: #1a6fa0;
+    font-size: 11px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-weight: 500;
+    margin-right: 4px;
+  }
+  .free-tag {
+    display: inline-block;
+    background: #e8f5e9;
+    color: #2e7d32;
+    font-size: 11px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-weight: 500;
+    margin-right: 4px;
+  }
+  .tbd-tag {
+    display: inline-block;
+    background: #fce4ec;
+    color: #c62828;
+    font-size: 11px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-weight: 500;
+    margin-right: 4px;
+  }
+
+  .sub-list { list-style: none; margin: 6px 0 0 18px; }
+  .sub-list li { font-size: 13px; color: var(--muted); margin-bottom: 4px; padding-left: 12px; position: relative; }
+  .sub-list li::before { content: '—'; position: absolute; left: 0; color: var(--border); }
+
+  .transport-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--sand);
+    border-radius: 6px;
+    padding: 3px 8px;
+    font-size: 12px;
+    color: var(--warm-brown);
+    font-weight: 500;
+    margin: 4px 2px 0;
+  }
+
+  /* ACTION ITEMS */
+  .action-section { margin-bottom: 28px; }
+  .action-section-title {
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .action-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 12px 14px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 8px;
+  }
+  .action-check {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+  }
+  .action-check.checked { background: var(--forest); border-color: var(--forest); color: white; font-size: 11px; }
+  .action-text { font-size: 14px; line-height: 1.4; }
+  .action-text .tag { font-size: 11px; padding: 2px 6px; border-radius: 4px; font-weight: 500; margin-right: 4px; }
+  .tag-urgent { background: #ffebee; color: #c62828; }
+  .tag-soon { background: #fff8e1; color: #f57f17; }
+  .tag-group { background: #e8eaf6; color: #283593; }
+  .action-sub { font-size: 12px; color: var(--muted); margin-top: 3px; }
+
+  /* FOOD */
+  .food-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 24px; }
+  .food-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+  }
+  .food-card-dest { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 6px; }
+  .food-card-name { font-weight: 500; font-size: 15px; color: var(--deep-brown); margin-bottom: 4px; }
+  .food-card-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+  .food-card-note { font-size: 12px; margin-top: 8px; }
+  .halal-badge { display: inline-block; background: #e8f5e9; color: #2e7d32; font-size: 11px; padding: 2px 7px; border-radius: 4px; font-weight: 500; }
+  .verify-badge { display: inline-block; background: #fff3e0; color: #e65100; font-size: 11px; padding: 2px 7px; border-radius: 4px; font-weight: 500; }
+  .tbd-badge { display: inline-block; background: #fce4ec; color: #c62828; font-size: 11px; padding: 2px 7px; border-radius: 4px; font-weight: 500; }
+
+  /* ACCOMMODATION */
+  .accom-grid { display: grid; gap: 14px; margin-bottom: 24px; }
+  .accom-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .accom-icon { font-size: 28px; flex-shrink: 0; }
+  .accom-name { font-weight: 500; font-size: 16px; color: var(--deep-brown); }
+  .accom-loc { font-size: 13px; color: var(--muted); margin-top: 2px; }
+  .accom-dates { font-size: 13px; color: var(--muted); margin-top: 4px; }
+  .accom-cost { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--forest); margin-top: 6px; }
+  .accom-status { margin-top: 8px; }
+
+  /* PACKING */
+  .pack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+  .pack-cat { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+  .pack-cat-title { font-weight: 500; font-size: 14px; color: var(--deep-brown); margin-bottom: 10px; }
+  .pack-item { font-size: 13px; color: var(--muted); margin-bottom: 5px; display: flex; gap: 8px; align-items: flex-start; }
+  .pack-item::before { content: '○'; color: var(--border); flex-shrink: 0; }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .hero { padding: 36px 20px 32px; }
+    .main { padding: 24px 20px 48px; }
+    .nav-wrap { padding: 0 12px; }
+    .dest-strip { grid-template-columns: 1fr; }
+    .overview-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-flags">🇸🇬 🏝️ 🇲🇾</div>
+    <h1 class="hero-title">Singapore & Malaysia</h1>
+    <p class="hero-sub">28 July – 8 August 2026 &nbsp;·&nbsp; 11 nights &nbsp;·&nbsp; 3 destinations</p>
+    <div class="hero-pills">
+      <span class="hero-pill">✈️ Etihad via Abu Dhabi</span>
+      <span class="hero-pill">🏨 V Hotel Bencoolen</span>
+      <span class="hero-pill">🏝️ Bubu Resort</span>
+      <span class="hero-pill">🕌 Halal-friendly</span>
+      <span class="hero-pill">👥 Group trip</span>
+    </div>
+  </div>
+</div>
+
+<div class="nav-wrap">
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showSection('overview')">Overview</button>
+    <button class="nav-tab" onclick="showSection('itinerary')">Itinerary</button>
+    <button class="nav-tab" onclick="showSection('actions')">To-Do & Decisions</button>
+    <button class="nav-tab" onclick="showSection('food')">Food Guide</button>
+    <button class="nav-tab" onclick="showSection('accommodation')">Accommodation</button>
+    <button class="nav-tab" onclick="showSection('packing')">Packing</button>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- OVERVIEW -->
+  <div class="section active" id="overview">
+    <p class="section-label">Trip Summary</p>
+    <h2 class="section-title">Your 11-night adventure</h2>
+
+    <div class="overview-grid">
+      <div class="stat-card">
+        <div class="stat-label">Departure</div>
+        <div class="stat-value">28 Jul</div>
+        <div class="stat-sub">Riyadh → Singapore via Abu Dhabi</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Return</div>
+        <div class="stat-value">8 Aug</div>
+        <div class="stat-sub">KL → Riyadh via Singapore</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Destinations</div>
+        <div class="stat-value">3</div>
+        <div class="stat-sub">Singapore · Perhentian Islands · KL</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Flights</div>
+        <div class="stat-value">3,351 SAR</div>
+        <div class="stat-sub">765€ total</div>
+      </div>
+    </div>
+
+    <div class="dest-strip">
+      <div class="dest-card sg" onclick="showSection('itinerary')">
+        <div class="dest-flag">🇸🇬</div>
+        <div class="dest-name">Singapore</div>
+        <div class="dest-dates">29 Jul – 1 Aug</div>
+        <div class="dest-nights">3 days · V Hotel Bencoolen</div>
+      </div>
+      <div class="dest-card pi" onclick="showSection('itinerary')">
+        <div class="dest-flag">🏝️</div>
+        <div class="dest-name">Perhentian Islands</div>
+        <div class="dest-dates">1 Aug – 5 Aug</div>
+        <div class="dest-nights">4 nights · Bubu Resort</div>
+      </div>
+      <div class="dest-card kl" onclick="showSection('itinerary')">
+        <div class="dest-flag">🇲🇾</div>
+        <div class="dest-name">Kuala Lumpur</div>
+        <div class="dest-dates">5 Aug – 8 Aug</div>
+        <div class="dest-nights">2.5 days · TBC</div>
+      </div>
+    </div>
+
+    <p class="section-label" style="margin-bottom:8px">Flights</p>
+    <div class="flights-grid" style="margin-bottom:32px">
+      <div class="flight-card">
+        <div class="flight-icon">✈️</div>
+        <div>
+          <div class="flight-route">Riyadh → Singapore</div>
+          <div class="flight-detail">28 Jul · 16:50 RUH → 09:40 SIN (+1) · Etihad via Abu Dhabi</div>
+        </div>
+        <span class="flight-badge badge-done">Booked</span>
+      </div>
+      <div class="flight-card">
+        <div class="flight-icon">✈️</div>
+        <div>
+          <div class="flight-route">Singapore → Kota Bharu</div>
+          <div class="flight-detail">1 Aug · 07:55 SIN → 12:05 KBR · AirAsia, 1 layover</div>
+        </div>
+        <span class="flight-badge badge-done">Booked</span>
+      </div>
+      <div class="flight-card">
+        <div class="flight-icon">✈️</div>
+        <div>
+          <div class="flight-route">Kota Bharu → Kuala Lumpur</div>
+          <div class="flight-detail">5 Aug · 18:05 KBR → 19:05 KUL · AirAsia</div>
+        </div>
+        <span class="flight-badge badge-done">Booked</span>
+      </div>
+      <div class="flight-card">
+        <div class="flight-icon">✈️</div>
+        <div>
+          <div class="flight-route">Kuala Lumpur → Riyadh</div>
+          <div class="flight-detail">8 Aug · 14:35 KUL → 21:45 RUH · Singapore Airlines, 1 layover</div>
+        </div>
+        <span class="flight-badge badge-done">Booked</span>
+      </div>
+    </div>
+
+    <p class="section-label" style="margin-bottom:8px">Budget Tracker</p>
+    <table class="cost-table" style="background:white;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:12px">
+      <thead>
+        <tr><th>Category</th><th>Amount</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="cat">✈️ Flights</td><td class="amount">3,351 SAR</td><td style="font-size:13px;color:var(--muted)">765€ · All 4 flights</td></tr>
+        <tr><td class="cat">🏨 Accommodation</td><td class="amount">8,215 SAR</td><td style="font-size:13px;color:var(--muted)">SG: 1,881 SAR · Perhentian: 6,334 SAR · KL: TBC</td></tr>
+        <tr><td class="cat">🚢 Perhentian Transfer</td><td class="amount">~344 SAR</td><td style="font-size:13px;color:var(--muted)">360 RM round trip van (up to 8 pax)</td></tr>
+        <tr><td class="cat">⛵ Ferry</td><td class="amount">~75 SAR pp</td><td style="font-size:13px;color:var(--muted)">78.4 RM per person round trip</td></tr>
+        <tr><td class="cat">🍟 Food</td><td class="tbd">To be tracked</td><td style="font-size:13px;color:var(--muted)">—</td></tr>
+        <tr><td class="cat">🎟️ Entertainment</td><td class="tbd">To be tracked</td><td style="font-size:13px;color:var(--muted)">Gardens domes, Petronas TBC</td></tr>
+        <tr><td class="cat">🚇 Local Transport</td><td class="tbd">To be tracked</td><td style="font-size:13px;color:var(--muted)">MRT, Grab, KTM</td></tr>
+      </tbody>
+    </table>
+    <div class="cost-total">
+      <span class="cost-total-label">Confirmed so far (per 2 pax)</span>
+      <span class="cost-total-val">~11,910 SAR</span>
+    </div>
+  </div>
+
+  <!-- ITINERARY -->
+  <div class="section" id="itinerary">
+    <p class="section-label">Day by Day</p>
+    <h2 class="section-title">Full Itinerary</h2>
+
+    <!-- DAY 1 -->
+    <div class="day-card" id="day1">
+      <div class="day-header" onclick="toggleDay('day1')">
+        <div class="day-num sg">1</div>
+        <div>
+          <div class="day-title">Arrival — Singapore 🇸🇬</div>
+          <div class="day-date">Wednesday, 29 July 2026</div>
+        </div>
+        <div class="day-toggle">▾</div>
+      </div>
+      <div class="day-body">
+        <ul class="day-items">
+          <li class="day-item"><div class="day-item-dot"></div><div>Arrive Changi Airport at 09:40 — explore <strong>Jewel Shopping Mall</strong> and the iconic waterfall before leaving</div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div>
+            Head to hotel <span class="transport-pill">🚇 MRT</span> Changi → City Hall → Bencoolen (~45 min, ~SGD 2) or <span class="transport-pill">🚗 Grab</span> ~SGD 20–25 if you have luggage
+          </div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div>Drop bags at <strong>V Hotel Bencoolen</strong> — 7/11 is on the same block for a quick snack</div></li>
+          <li class="day-item"><div class="day-item-dot tip"></div><div><span class="tip-tag">TIP</span> Request early check-in in advance (standard is 3pm)</div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div>Head to <strong>Gardens by the Bay</strong> <span class="transport-pill">🚇 MRT</span> Bencoolen → Bayfront (Downtown Line, direct, ~15 min)
+            <ul class="sub-list">
+              <li>Cloud Forest dome</li>
+              <li>Flower Dome</li>
+              <li>Supertree Grove <span class="free-tag">FREE</span></li>
+              <li>Garden Rhapsody light show — 7:45pm & 8:45pm <span class="free-tag">FREE</span></li>
+            </ul>
+          </div></li>
+          <li class="day-item"><div class="day-item-dot warn"></div><div><span class="warn-tag">⚠️ BOOK</span> Dome tickets in advance: ticket2.gardensbythebay.com.sg</div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div>Dinner at <strong>Lau Pa Sat / Satay Street</strong> — short walk or Grab from Gardens (~10 min). End the night here</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- DAY 2 -->
+    <div class="day-card" id="day2">
+      <div class="day-header" onclick="toggleDay('day2')">
+        <div class="day-num sg">2</div>
+        <div>
+          <div class="day-title">Little India · Kampong Glam · Marina Bay 🇸🇬</div>
+          <div class="day-date">Thursday, 30 July 2026</div>
+        </div>
+        <div class="day-toggle">▾</div>
+      </div>
+      <div class="day-body">
+        <ul class="day-items">
+          <li class="day-item"><div class="day-item-dot"></div><div>Breakfast near the hotel — cafes and kopitiams along Bencoolen Street</div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div><strong>Little India</strong> <span class="transport-pill">🚇 MRT</span> Bencoolen → Little India (2 stops, ~5 min)
+            <ul class="sub-list">
+              <li>Sri Veeramakaliamman Temple</li>
+              <li>Tekka Centre</li>
+              <li>Walk through the colourful streets</li>
+            </ul>
+          </div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div><strong>Kampong Glam</strong> <span class="transport-pill">🚶 10 min walk</span> or <span class="transport-pill">🚗 5 min Grab</span>
+            <ul class="sub-list">
+              <li>Sultan Mosque</li>
+              <li>Arab Street</li>
+              <li>Haji Lane — especially lively in the evening</li>
+              <li>Coffee / dessert stop</li>
+            </ul>
+          </div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div>Lunch in the Kampong Glam area — Arab Street has great halal options</div></li>
+          <li class="day-item"><div class="day-item-dot tip"></div><div><span class="tip-tag">OPT</span> Head back to hotel for a rest, or continue to MBS Shoppes <span class="transport-pill">🚇 MRT</span> to Bayfront (~15 min)</div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div><strong>Marina Bay</strong> — all walkable from MBS
+            <ul class="sub-list">
+              <li>Helix Bridge</li>
+              <li>The Merlion</li>
+              <li>The Esplanade</li>
+            </ul>
+          </div></li>
+          <li class="day-item"><div class="day-item-dot warn"></div><div><span class="warn-tag">⚠️ DECIDE</span> <strong>Marina Bay Sands Skypark</strong> (paid, book ahead) OR rooftop bar — Spago / Lavo (drinks + food, similar views). Group vote needed</div></li>
+          <li class="day-item"><div class="day-item-dot free"></div><div><span class="free-tag">FREE</span> <strong>Spectra Light & Water Show</strong> — 8pm or 9pm from the waterfront</div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div>End the night at <strong>Clarke Quay</strong> <span class="transport-pill">🚗 Grab ~10 min</span> or walk along the river (~20 min)</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- DAY 3 -->
+    <div class="day-card" id="day3">
+      <div class="day-header" onclick="toggleDay('day3')">
+        <div class="day-num sg">3</div>
+        <div>
+          <div class="day-title">Chinatown · Orchard Road · Rooftop 🇸🇬</div>
+          <div class="day-date">Friday, 31 July 2026</div>
+        </div>
+        <div class="day-toggle">▾</div>
+      </div>
+      <div class="day-body">
+        <ul class="day-items">
+          <li class="day-item"><div class="day-item-dot"></div><div><strong>Chinatown</strong> <span class="transport-pill">🚇 MRT</span> Bencoolen → Chinatown (Downtown Line, ~10 min)
+            <ul class="sub-list">
+              <li>Buddha Tooth Relic Temple</li>
+              <li>Chinatown Street Market</li>
+              <li>Maxwell Food Centre — lunch here</li>
+              <li>Optional: Chinatown Murders Game Tour (book via Klook)</li>
+            </ul>
+          </div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div><strong>Orchard Road</strong> <span class="transport-pill">🚇 MRT</span> Chinatown → Orchard (~10 min)
+            <ul class="sub-list">
+              <li>Takashimaya</li>
+              <li>ION Orchard</li>
+              <li>Paragon</li>
+              <li>Walk the boulevard</li>
+            </ul>
+          </div></li>
+          <li class="day-item"><div class="day-item-dot warn"></div><div><span class="warn-tag">⚠️ BOOK</span> Rooftop for the evening — Friday night, fills fast. Options: Atlas · Ce La Vi · SKAI · MBS rooftop</div></li>
+          <li class="day-item"><div class="day-item-dot warn"></div><div><span class="warn-tag">⚠️ EARLY NIGHT</span> 07:55 flight tomorrow — be in bed by 10:30pm</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- DAY 4 -->
+    <div class="day-card" id="day4">
+      <div class="day-header" onclick="toggleDay('day4')">
+        <div class="day-num transit">4</div>
+        <div>
+          <div class="day-title">Singapore → Perhentian Islands ✈️🏝️</div>
+          <div class="day-date">Saturday, 1 August 2026</div>
+        </div>
+        <div class="day-toggle">▾</div>
+      </div>
+      <div class="day-body">
+        <ul class="day-items">
+          <li class="day-item"><div class="day-item-dot warn"></div><div><span class="warn-tag">⚠️</span> Leave hotel by <strong>05:00am</strong> — airport by 06:00 for 07:55 flight</div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div><span class="transport-pill">🚗 Grab</span> to Changi Airport (~25–30 min, ~SGD 25–30) — MRT doesn't run this early</div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div>Fly Singapore → Kota Bharu · AirAsia · 07:55 → 12:05 (1 layover)</div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div>At Kota Bharu airport: pre-booked private van to Besut Jetty <span class="transport-pill">🚐 Besutjetty.com</span>
+            <ul class="sub-list">
+              <li>Cost: 360 RM round trip (up to 8 pax)</li>
+              <li>Speedboat to island: 78.4 RM pp round trip</li>
+            </ul>
+          </div></li>
+          <li class="day-item"><div class="day-item-dot free"></div><div>Arrive Bubu Resort — check in, settle in, enjoy the sunset, eat, rest</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- DAYS 5-7 -->
+    <div class="day-card" id="day5">
+      <div class="day-header" onclick="toggleDay('day5')">
+        <div class="day-num pi">5–7</div>
+        <div>
+          <div class="day-title">Perhentian Islands — Free Days 🏝️</div>
+          <div class="day-date">2 August – 4 August 2026</div>
+        </div>
+        <div class="day-toggle">▾</div>
+      </div>
+      <div class="day-body">
+        <ul class="day-items">
+          <li class="day-item"><div class="day-item-dot tip"></div><div><span class="tip-tag">TIP</span> Book snorkeling trips the evening before at Bubu Resort's activity desk — August is peak season</div></li>
+          <li class="day-item"><div class="day-item-dot free"></div><div><strong>Greater Island</strong> options: Turtle Beach · Teluk Pauh · Teluk Keke · Coral Beach (great sunsets)</div></li>
+          <li class="day-item"><div class="day-item-dot free"></div><div><strong>Lesser Island</strong> (where you are): Mira Beach · Long Beach · Turtle Beach · Romantic Beach</div></li>
+          <li class="day-item"><div class="day-item-dot free"></div><div><strong>Snorkeling / Island Hopping</strong>: Shark & Fish Point · Coral Garden · Turtle Point</div></li>
+          <li class="day-item"><div class="day-item-dot tip"></div><div><span class="tip-tag">TIP</span> Turtle nesting season June–September — real chance of spotting sea turtles on the beach or while snorkeling</div></li>
+          <li class="day-item"><div class="day-item-dot free"></div><div><strong>At night</strong>: fire show on Long Beach</div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div><strong>Food options:</strong> Pitstop Cafe · Mama's Cafe · Panorama Kitchen · Ocean Boys Waffle · Mummy Burger · Roti Canai near fisherman's village</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- DAY 8 -->
+    <div class="day-card" id="day8">
+      <div class="day-header" onclick="toggleDay('day8')">
+        <div class="day-num transit">8</div>
+        <div>
+          <div class="day-title">Perhentian Islands → Kuala Lumpur ✈️</div>
+          <div class="day-date">Wednesday, 5 August 2026</div>
+        </div>
+        <div class="day-toggle">▾</div>
+      </div>
+      <div class="day-body">
+        <ul class="day-items">
+          <li class="day-item"><div class="day-item-dot"></div><div>Wake up, breakfast, check-out by 11am</div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div>Speedboat from 12pm → mainland ~1pm · Pre-booked taxi to airport · Arrive ~2pm</div></li>
+          <li class="day-item"><div class="day-item-dot warn"></div><div><span class="warn-tag">⚠️</span> Boat schedule is weather-dependent — pre-book return taxi to avoid waiting</div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div>Relax at lounge until 18:05 flight · Arrive KL 19:05</div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div>Hotel check-in, refresh</div></li>
+          <li class="day-item"><div class="day-item-dot warn"></div><div><span class="warn-tag">TBD</span> Dinner near hotel — depends on hotel location. Options: Nasi Kandar Pelita · Halab KL · mamak nearby</div></li>
+          <li class="day-item"><div class="day-item-dot tip"></div><div><span class="tip-tag">OPT</span> If energy remains: evening walk around KLCC Park or Bukit Bintang. If not — rest and start fresh tomorrow</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- DAY 9 -->
+    <div class="day-card" id="day9">
+      <div class="day-header" onclick="toggleDay('day9')">
+        <div class="day-num kl">9</div>
+        <div>
+          <div class="day-title">Batu Caves · KLCC · Bukit Bintang 🇲🇾</div>
+          <div class="day-date">Thursday, 6 August 2026</div>
+        </div>
+        <div class="day-toggle">▾</div>
+      </div>
+      <div class="day-body">
+        <ul class="day-items">
+          <li class="day-item"><div class="day-item-dot"></div><div>Start at a <strong>mamak stall</strong> — teh tarik & roti canai. Leave hotel by 9:30am
+            <ul class="sub-list">
+              <li>💡 Tamil Muslim-owned, always halal, cheap & open late</li>
+              <li>Search: "mamak stall near me" / "Indian Muslim restaurant" / "nasi kandar restaurant"</li>
+              <li>Options: Restoran Yusoof Dan Zakhir · Pelita Nasi Kandar · Restoran Insaf</li>
+            </ul>
+          </div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div><strong>Batu Caves</strong> <span class="transport-pill">🚇 KTM Komuter</span> — last stop on the line, arrive ~10:30am
+            <ul class="sub-list">
+              <li>Explore the caves and climb 272 steps</li>
+            </ul>
+          </div></li>
+          <li class="day-item"><div class="day-item-dot warn"></div><div><span class="warn-tag">⚠️</span> Dress code: shoulders & knees covered. Bring water. Watch for monkeys.</div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div>Head back to the city <span class="transport-pill">🚇 KTM Komuter</span> ~30–40 min → KL Sentral, arrive ~1:30pm</div></li>
+          <li class="day-item"><div class="day-item-dot tip"></div><div><span class="tip-tag">OPT</span> Merdeka Square on foot — Sultan Abdul Samad Building · Dataran Merdeka · "I ❤️ KL" sign. Skip if running behind</div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div>Lunch at <strong>Kampung Baru</strong> <span class="transport-pill">🚗 Grab</span> — Malay hawker, almost entirely halal. Try nasi lemak · rendang · roti canai</div></li>
+          <li class="day-item"><div class="day-item-dot warn"></div><div><span class="warn-tag">⚠️ DECIDE</span> <strong>Petronas Twin Towers</strong> — pre-booked deck (~RM170/pp) OR KLCC Park only (free). Group vote needed</div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div>Walk through <strong>Suria KLCC</strong> mall — rest, coffee break</div></li>
+          <li class="day-item"><div class="day-item-dot free"></div><div><span class="free-tag">FREE</span> <strong>Lake Symphony</strong> light show at KLCC Park — 7:30pm, right outside Suria KLCC. Petronas Towers as backdrop. Arrive by 7:15pm</div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div><span class="transport-pill">🚗 Grab ~10 min</span> Dinner at <strong>Jalan Alor</strong> — KL's most famous food street
+            <ul class="sub-list">
+              <li>⚠️ Not entirely halal — look for JAKIM certification or ask at each stall</li>
+            </ul>
+          </div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div>End the night exploring <strong>Bukit Bintang</strong> (Jalan Alor is right in the heart of it):
+            <ul class="sub-list">
+              <li>Bintang Walk — pedestrian boulevard, lively at night</li>
+              <li>Pavilion KL — post-dinner dessert browse</li>
+              <li>Jalan Changkat — mocktail or dessert to close the night</li>
+            </ul>
+          </div></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- DAY 10 -->
+    <div class="day-card" id="day10">
+      <div class="day-header" onclick="toggleDay('day10')">
+        <div class="day-num kl">10</div>
+        <div>
+          <div class="day-title">Bukit Bintang · Jummah · Chinatown · Rooftop 🇲🇾</div>
+          <div class="day-date">Friday, 7 August 2026</div>
+        </div>
+        <div class="day-toggle">▾</div>
+      </div>
+      <div class="day-body">
+        <ul class="day-items">
+          <li class="day-item"><div class="day-item-dot warn"></div><div><span class="tbd-tag">TBD</span> Breakfast — leave hotel by 9:30am. Options: <strong>VCR Cafe</strong> (western + local, near Bukit Bintang) · <strong>Oriental Kopi</strong> (kaya toast, nasi lemak) · mamak</div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div><strong>Bukit Bintang</strong> — browse and shopping at Pavilion KL (Uniqlo here)</div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div><span class="transport-pill">🚗 Grab</span> Head to <strong>Masjid Negara</strong> by 12:00pm for Jummah prayer (~12:30–1:15pm) — central and stunning</div></li>
+          <li class="day-item"><div class="day-item-dot warn"></div><div><span class="tbd-tag">TBD</span> Lunch after prayer. Options near Masjid Negara: <strong>Rebung by Chef Ismail</strong> (traditional Malay buffet) · <strong>Madam Kwan's</strong> (Malaysian classics, group-friendly)</div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div><strong>Chinatown — Petaling Street</strong> <span class="transport-pill">🚗 Grab</span> — browse the market, souvenirs
+            <ul class="sub-list">
+              <li>Sri Mahamariamman Temple — Jalan Tun H.S. Lee (short walk from Petaling St)</li>
+              <li>Kwai Chai Hong / Mural Alley — Lorong Panggung, historic back lane with interactive murals</li>
+            </ul>
+          </div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div><strong>Central Market</strong> — Malaysian crafts and gifts (short walk from Chinatown)</div></li>
+          <li class="day-item"><div class="day-item-dot warn"></div><div><span class="warn-tag">⚠️ DECIDE</span> <strong>KL Tower</strong> — observation deck (~RM50/pp, views of Petronas Towers) or photo backdrop only. Best at 5–6pm</div></li>
+          <li class="day-item"><div class="day-item-dot warn"></div><div><span class="warn-tag">⚠️ BOOK</span> Sunset rooftop send-off — <strong>Vertigo at Banyan Tree KL</strong> (Level 59, views of both Petronas + KL Tower) · Friday night, book ahead</div></li>
+          <li class="day-item"><div class="day-item-dot warn"></div><div><span class="tbd-tag">TBD</span> Dinner — if rooftop is drinks only, options: <strong>Bijan Bar & Restaurant</strong> (upscale Malay, halal) · <strong>THIRTY8 at Grand Hyatt</strong> (Petronas views, premium)</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- DAY 11 -->
+    <div class="day-card" id="day11">
+      <div class="day-header" onclick="toggleDay('day11')">
+        <div class="day-num transit">11</div>
+        <div>
+          <div class="day-title">Departure — Kuala Lumpur → Riyadh ✈️</div>
+          <div class="day-date">Saturday, 8 August 2026</div>
+        </div>
+        <div class="day-toggle">▾</div>
+      </div>
+      <div class="day-body">
+        <ul class="day-items">
+          <li class="day-item"><div class="day-item-dot"></div><div>Pack and check out — flight at 14:35</div></li>
+          <li class="day-item"><div class="day-item-dot warn"></div><div><span class="warn-tag">⚠️</span> Leave hotel by <strong>11:00am</strong> at the latest</div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div><span class="transport-pill">🚇 KLIA Ekspres</span> KL Sentral → KLIA (~28 min, every 15–30 min, ~RM55/pp)</div></li>
+          <li class="day-item"><div class="day-item-dot tip"></div><div><span class="tip-tag">TIP</span> If grabbing breakfast out, leave 45 min earlier and factor it in before heading to KL Sentral</div></li>
+          <li class="day-item"><div class="day-item-dot tip"></div><div><span class="tip-tag">OPT</span> Quick breakfast at hotel, nearby cafe, or 7/11 to keep it simple</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIONS / TO-DO -->
+  <div class="section" id="actions">
+    <p class="section-label">Checklist</p>
+    <h2 class="section-title">To-Do & Group Decisions</h2>
+
+    <div class="action-section">
+      <div class="action-section-title">🔴 Book Immediately</div>
+
+      <div class="action-item">
+        <div class="action-check" onclick="toggleCheck(this)"></div>
+        <div>
+          <div class="action-text"><span class="tag tag-urgent">URGENT</span> <strong>Besut Jetty — Private Van</strong> (airport ↔ ferry terminal, round trip)</div>
+          <div class="action-sub">360 RM round trip · up to 8 pax · besutjetty.com/search-trip</div>
+        </div>
+      </div>
+
+      <div class="action-item">
+        <div class="action-check" onclick="toggleCheck(this)"></div>
+        <div>
+          <div class="action-text"><span class="tag tag-urgent">URGENT</span> <strong>Gardens by the Bay — Dome Tickets</strong></div>
+          <div class="action-sub">Cloud Forest / Flower Dome / Both — pending group vote · ticket2.gardensbythebay.com.sg</div>
+        </div>
+      </div>
+
+      <div class="action-item">
+        <div class="action-check" onclick="toggleCheck(this)"></div>
+        <div>
+          <div class="action-text"><span class="tag tag-urgent">URGENT</span> <strong>Singapore Rooftop — Day 3 (Friday 31 Jul)</strong></div>
+          <div class="action-sub">Atlas / Ce La Vi / SKAI / MBS — Friday night fills fast. Book as soon as decided</div>
+        </div>
+      </div>
+
+      <div class="action-item">
+        <div class="action-check" onclick="toggleCheck(this)"></div>
+        <div>
+          <div class="action-text"><span class="tag tag-urgent">URGENT</span> <strong>Vertigo at Banyan Tree KL — Day 10 (Friday 7 Aug)</strong></div>
+          <div class="action-sub">Level 59, views of Petronas + KL Tower · Friday night, book well ahead</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <div class="action-section-title">🟡 Book Once Group Decides</div>
+
+      <div class="action-item">
+        <div class="action-check" onclick="toggleCheck(this)"></div>
+        <div>
+          <div class="action-text"><span class="tag tag-soon">SOON</span> <strong>Petronas Twin Towers — Observation Deck</strong></div>
+          <div class="action-sub">~RM170/pp · Skybridge + 86th floor · eticket.petronastwintowers.com.my · Sells out weeks ahead · ⚠️ Closed 1pm–2:30pm Fridays</div>
+        </div>
+      </div>
+
+      <div class="action-item">
+        <div class="action-check" onclick="toggleCheck(this)"></div>
+        <div>
+          <div class="action-text"><span class="tag tag-soon">SOON</span> <strong>Marina Bay Sands — Skypark or Rooftop Bar</strong></div>
+          <div class="action-sub">Obs deck (paid, book ahead) OR rooftop bar Spago/Lavo (drinks + food, similar views). Group vote needed</div>
+        </div>
+      </div>
+
+      <div class="action-item">
+        <div class="action-check" onclick="toggleCheck(this)"></div>
+        <div>
+          <div class="action-text"><span class="tag tag-soon">SOON</span> <strong>KL Hotel</strong></div>
+          <div class="action-sub">Still outstanding — location affects Day 8 dinner and Day 10 breakfast suggestions</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <div class="action-section-title">🔵 Group Decisions Needed</div>
+
+      <div class="action-item">
+        <div class="action-check" onclick="toggleCheck(this)"></div>
+        <div>
+          <div class="action-text"><span class="tag tag-group">GROUP</span> <strong>Gardens by the Bay</strong> — Cloud Forest only / Flower Dome only / Both / Skip domes (free areas only)</div>
+        </div>
+      </div>
+
+      <div class="action-item">
+        <div class="action-check" onclick="toggleCheck(this)"></div>
+        <div>
+          <div class="action-text"><span class="tag tag-group">GROUP</span> <strong>Marina Bay Sands</strong> — Rooftop bar (drinks included) or observation deck?</div>
+        </div>
+      </div>
+
+      <div class="action-item">
+        <div class="action-check" onclick="toggleCheck(this)"></div>
+        <div>
+          <div class="action-text"><span class="tag tag-group">GROUP</span> <strong>Petronas Twin Towers</strong> — Book the deck (~RM170/pp) or KLCC Park only (free)?</div>
+        </div>
+      </div>
+
+      <div class="action-item">
+        <div class="action-check" onclick="toggleCheck(this)"></div>
+        <div>
+          <div class="action-text"><span class="tag tag-group">GROUP</span> <strong>KL Tower</strong> — Book observation deck (~RM50/pp) or photo backdrop only?</div>
+        </div>
+      </div>
+
+      <div class="action-item">
+        <div class="action-check" onclick="toggleCheck(this)"></div>
+        <div>
+          <div class="action-text"><span class="tag tag-group">GROUP</span> <strong>Restaurant bookings</strong> — Trust Gulam to book key spots / vote before each / Friday nights only / spontaneous?</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <div class="action-section-title">🍽️ Meals Still to Confirm</div>
+
+      <div class="action-item">
+        <div class="action-check" onclick="toggleCheck(this)"></div>
+        <div>
+          <div class="action-text"><strong>Day 8 — KL Arrival Dinner</strong></div>
+          <div class="action-sub">Depends on hotel location. Options: Nasi Kandar Pelita · Halab KL · mamak nearby</div>
+        </div>
+      </div>
+
+      <div class="action-item">
+        <div class="action-check" onclick="toggleCheck(this)"></div>
+        <div>
+          <div class="action-text"><strong>Day 10 — Breakfast</strong></div>
+          <div class="action-sub">VCR Cafe (western + local fusion) · Oriental Kopi (kaya toast, nasi lemak) · mamak</div>
+        </div>
+      </div>
+
+      <div class="action-item">
+        <div class="action-check" onclick="toggleCheck(this)"></div>
+        <div>
+          <div class="action-text"><strong>Day 10 — Lunch after Jummah</strong></div>
+          <div class="action-sub">Rebung by Chef Ismail (Malay buffet, near Masjid Negara) · Madam Kwan's (Malaysian classics, group-friendly)</div>
+        </div>
+      </div>
+
+      <div class="action-item">
+        <div class="action-check" onclick="toggleCheck(this)"></div>
+        <div>
+          <div class="action-text"><strong>Day 10 — Dinner</strong></div>
+          <div class="action-sub">If Vertigo is drinks only: Bijan Bar & Restaurant (upscale Malay, halal) · THIRTY8 at Grand Hyatt (Petronas views)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOD GUIDE -->
+  <div class="section" id="food">
+    <p class="section-label">Where to Eat</p>
+    <h2 class="section-title">Food Guide</h2>
+
+    <p style="font-size:14px;color:var(--muted);margin-bottom:20px">All restaurants marked <span class="halal-badge">HALAL</span> are confirmed halal. <span class="verify-badge">VERIFY</span> means check JAKIM certification on arrival. <span class="tbd-badge">TBD</span> means still to confirm.</p>
+
+    <p class="section-label" style="margin-bottom:10px">Singapore 🇸🇬</p>
+    <div class="food-grid" style="margin-bottom:24px">
+      <div class="food-card">
+        <div class="food-card-dest">Day 1 · Dinner</div>
+        <div class="food-card-name">Lau Pa Sat / Satay Street</div>
+        <div class="food-card-desc">Iconic hawker centre. Best at night when Satay Street opens. Short Grab from Gardens by the Bay.</div>
+        <div class="food-card-note"><span class="verify-badge">VERIFY</span> Check individual stalls</div>
+      </div>
+      <div class="food-card">
+        <div class="food-card-dest">Day 2 · Lunch</div>
+        <div class="food-card-name">Arab Street / Kampong Glam</div>
+        <div class="food-card-desc">Good halal options in the area. Turkish, Middle Eastern, and Malay restaurants line the streets.</div>
+        <div class="food-card-note"><span class="halal-badge">HALAL</span> Muslim-owned area</div>
+      </div>
+      <div class="food-card">
+        <div class="food-card-dest">Day 3 · Lunch</div>
+        <div class="food-card-name">Maxwell Food Centre</div>
+        <div class="food-card-desc">Classic Singapore hawker centre in Chinatown. Tian Tian Chicken Rice is the famous stall.</div>
+        <div class="food-card-note"><span class="verify-badge">VERIFY</span> Check individual stalls</div>
+      </div>
+    </div>
+
+    <p class="section-label" style="margin-bottom:10px">Perhentian Islands 🏝️</p>
+    <div class="food-grid" style="margin-bottom:24px">
+      <div class="food-card">
+        <div class="food-card-dest">All days · Various</div>
+        <div class="food-card-name">Island Eateries</div>
+        <div class="food-card-desc">Pitstop Cafe · Mama's Cafe · Panorama Kitchen · Ocean Boys Waffle · Mummy Burger · Roti Canai near fisherman's village</div>
+        <div class="food-card-note"><span class="halal-badge">HALAL</span> Muslim-majority island</div>
+      </div>
+    </div>
+
+    <p class="section-label" style="margin-bottom:10px">Kuala Lumpur 🇲🇾</p>
+    <div class="food-grid">
+      <div class="food-card">
+        <div class="food-card-dest">Day 8 · Arrival Dinner</div>
+        <div class="food-card-name">Near KL Hotel (TBC)</div>
+        <div class="food-card-desc">Nasi Kandar Pelita · Halab KL (Yemeni/Syrian) · Mamak stall nearby</div>
+        <div class="food-card-note"><span class="tbd-badge">TBD</span> Depends on hotel location</div>
+      </div>
+      <div class="food-card">
+        <div class="food-card-dest">Day 9 · Breakfast</div>
+        <div class="food-card-name">Mamak Stall</div>
+        <div class="food-card-desc">Teh tarik + roti canai. Search "mamak stall near me". Options: Restoran Yusoof Dan Zakhir · Pelita Nasi Kandar · Restoran Insaf</div>
+        <div class="food-card-note"><span class="halal-badge">HALAL</span> Always halal</div>
+      </div>
+      <div class="food-card">
+        <div class="food-card-dest">Day 9 · Lunch</div>
+        <div class="food-card-name">Kampung Baru</div>
+        <div class="food-card-desc">Malay hawker village. Try nasi lemak, rendang, roti canai. Almost entirely Muslim-owned.</div>
+        <div class="food-card-note"><span class="halal-badge">HALAL</span> Almost entirely halal</div>
+      </div>
+      <div class="food-card">
+        <div class="food-card-dest">Day 9 · Dinner</div>
+        <div class="food-card-name">Jalan Alor</div>
+        <div class="food-card-desc">KL's most famous food street. Great atmosphere. Not entirely halal — verify each stall individually.</div>
+        <div class="food-card-note"><span class="verify-badge">VERIFY</span> Look for JAKIM cert</div>
+      </div>
+      <div class="food-card">
+        <div class="food-card-dest">Day 10 · Breakfast</div>
+        <div class="food-card-name">VCR Cafe or Oriental Kopi</div>
+        <div class="food-card-desc">VCR: western + local fusion, near Bukit Bintang. Oriental Kopi: kaya toast, egg tarts, nasi lemak — great for groups.</div>
+        <div class="food-card-note"><span class="tbd-badge">TBD</span> To confirm</div>
+      </div>
+      <div class="food-card">
+        <div class="food-card-dest">Day 10 · Lunch</div>
+        <div class="food-card-name">After Jummah — Near Masjid Negara</div>
+        <div class="food-card-desc">Rebung by Chef Ismail (Malay buffet, solid) · Madam Kwan's (Malaysian classics, group-friendly)</div>
+        <div class="food-card-note"><span class="tbd-badge">TBD</span> To confirm</div>
+      </div>
+      <div class="food-card">
+        <div class="food-card-dest">Day 10 · Dinner</div>
+        <div class="food-card-name">Bijan Bar & Restaurant</div>
+        <div class="food-card-desc">Upscale Malay cuisine, halal, near nightlife areas. Great final-night atmosphere. Or THIRTY8 at Grand Hyatt for Petronas views.</div>
+        <div class="food-card-note"><span class="halal-badge">HALAL</span> <span class="tbd-badge">TBD</span> To confirm</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACCOMMODATION -->
+  <div class="section" id="accommodation">
+    <p class="section-label">Where to Stay</p>
+    <h2 class="section-title">Accommodation</h2>
+
+    <div class="accom-grid">
+      <div class="accom-card">
+        <div class="accom-icon">🇸🇬</div>
+        <div>
+          <div class="accom-name">V Hotel Bencoolen</div>
+          <div class="accom-loc">Bencoolen Street, Singapore — directly above Bencoolen MRT (Downtown Line)</div>
+          <div class="accom-dates">29 Jul – 1 Aug · 3 nights</div>
+          <div class="accom-cost">1,881 SAR (425€) for 2</div>
+          <div class="accom-status"><span class="halal-badge">HALAL</span> In-house restaurant Yuugo is halal-certified</div>
+        </div>
+      </div>
+      <div class="accom-card">
+        <div class="accom-icon">🏝️</div>
+        <div>
+          <div class="accom-name">Bubu Resort</div>
+          <div class="accom-loc">Perhentian Kecil (Lesser Island), Long Beach</div>
+          <div class="accom-dates">1 Aug – 5 Aug · 4 nights</div>
+          <div class="accom-cost">6,334 SAR (1,433€) for 2</div>
+          <div class="accom-status"><span class="halal-badge">BOOKED ✓</span></div>
+        </div>
+      </div>
+      <div class="accom-card">
+        <div class="accom-icon">🇲🇾</div>
+        <div>
+          <div class="accom-name">KL Hotel</div>
+          <div class="accom-loc">Kuala Lumpur — location TBC</div>
+          <div class="accom-dates">5 Aug – 8 Aug · 3 nights</div>
+          <div class="accom-cost" style="color:var(--muted);font-size:14px;font-style:italic">Cost TBC</div>
+          <div class="accom-status"><span class="tbd-badge">NOT BOOKED</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PACKING -->
+  <div class="section" id="packing">
+    <p class="section-label">What to Bring</p>
+    <h2 class="section-title">Packing List</h2>
+
+    <div class="pack-grid">
+      <div class="pack-cat">
+        <div class="pack-cat-title">🏖️ Beach & Islands</div>
+        <div class="pack-item">Swimwear (multiple sets)</div>
+        <div class="pack-item">Reef-safe sunscreen</div>
+        <div class="pack-item">Rash guard</div>
+        <div class="pack-item">Water shoes / sandals</div>
+        <div class="pack-item">Dry bag for valuables</div>
+        <div class="pack-item">Snorkel mask (optional)</div>
+        <div class="pack-item">Insect repellent</div>
+        <div class="pack-item">After-sun lotion</div>
+      </div>
+      <div class="pack-cat">
+        <div class="pack-cat-title">🕌 Temples & Mosques</div>
+        <div class="pack-item">Lightweight cover-up (shoulders + knees)</div>
+        <div class="pack-item">Socks for temple visits</div>
+        <div class="pack-item">Sarong (backup)</div>
+        <div class="pack-item">Slip-on shoes (easy to remove)</div>
+      </div>
+      <div class="pack-cat">
+        <div class="pack-cat-title">🌆 City Days</div>
+        <div class="pack-item">Comfortable walking shoes</div>
+        <div class="pack-item">Light layers (AC is strong indoors)</div>
+        <div class="pack-item">Smart casual outfit for rooftops</div>
+        <div class="pack-item">Day bag / backpack</div>
+        <div class="pack-item">Portable charger</div>
+        <div class="pack-item">Reusable water bottle</div>
+      </div>
+      <div class="pack-cat">
+        <div class="pack-cat-title">📱 Tech & Documents</div>
+        <div class="pack-item">Passport (valid 6+ months)</div>
+        <div class="pack-item">Travel insurance docs</div>
+        <div class="pack-item">All flight e-tickets downloaded</div>
+        <div class="pack-item">Grab app installed (SE Asia)</div>
+        <div class="pack-item">Google Maps offline — SG, KL</div>
+        <div class="pack-item">Universal adapter</div>
+        <div class="pack-item">SIM card or eSIM for Malaysia</div>
+      </div>
+      <div class="pack-cat">
+        <div class="pack-cat-title">💊 Health & Safety</div>
+        <div class="pack-item">Seasickness tablets</div>
+        <div class="pack-item">Basic first aid kit</div>
+        <div class="pack-item">Antihistamines</div>
+        <div class="pack-item">Diarrhoea medication</div>
+        <div class="pack-item">Sunburn relief</div>
+        <div class="pack-item">Hand sanitiser</div>
+      </div>
+      <div class="pack-cat">
+        <div class="pack-cat-title">💰 Money</div>
+        <div class="pack-item">SGD cash (Singapore)</div>
+        <div class="pack-item">MYR cash (Malaysia)</div>
+        <div class="pack-item">Travel card with no FX fees</div>
+        <div class="pack-item">Small denominations for hawkers</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    const tabs = document.querySelectorAll('.nav-tab');
+    const map = { overview: 0, itinerary: 1, actions: 2, food: 3, accommodation: 4, packing: 5 };
+    tabs[map[id]].classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleDay(id) {
+    const card = document.getElementById(id);
+    card.classList.toggle('open');
+  }
+
+  function toggleCheck(el) {
+    el.classList.toggle('checked');
+    el.textContent = el.classList.contains('checked') ? '✓' : '';
+  }
+
+  // Open first day by default
+  document.getElementById('day1').classList.add('open');
+</script>
+</body>
+</html>
