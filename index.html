@@ -419,7 +419,6 @@
   <div class="nav-tabs">
     <button class="nav-tab active" onclick="showSection('overview')">Overview</button>
     <button class="nav-tab" onclick="showSection('itinerary')">Itinerary</button>
-    <button class="nav-tab" onclick="showSection('actions')">To-Do & Decisions</button>
     <button class="nav-tab" onclick="showSection('food')">Food Guide</button>
     <button class="nav-tab" onclick="showSection('accommodation')">Accommodation</button>
     <button class="nav-tab" onclick="showSection('packing')">Packing</button>
@@ -491,7 +490,7 @@
         <div class="flight-icon">✈️</div>
         <div>
           <div class="flight-route">Singapore → Kota Bharu</div>
-          <div class="flight-detail">1 Aug · 07:55 SIN → 12:05 KBR · AirAsia, 1 layover</div>
+          <div class="flight-detail">1 Aug · 07:55 SIN → 09:00 KUL (AirAsia AK700) · 3hr 5min transfer · 12:05 KUL → 13:10 KBR (AirAsia AK6442) · Baggage checked through</div>
         </div>
         <span class="flight-badge badge-done">Booked</span>
       </div>
@@ -516,21 +515,21 @@
     <p class="section-label" style="margin-bottom:8px">Budget Tracker</p>
     <table class="cost-table" style="background:white;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:12px">
       <thead>
-        <tr><th>Category</th><th>Amount</th><th>Notes</th></tr>
+        <tr><th>Category</th><th>Amount (per person)</th><th>Notes</th></tr>
       </thead>
       <tbody>
         <tr><td class="cat">✈️ Flights</td><td class="amount">3,351 SAR</td><td style="font-size:13px;color:var(--muted)">765€ · All 4 flights</td></tr>
-        <tr><td class="cat">🏨 Accommodation</td><td class="amount">8,856 SAR</td><td style="font-size:13px;color:var(--muted)">SG: 1,881 SAR · Perhentian: 6,334 SAR · KL: ~641 SAR — all per 2 pax</td></tr>
-        <tr><td class="cat">🚢 Perhentian Transfer</td><td class="amount">~344 SAR</td><td style="font-size:13px;color:var(--muted)">360 RM round trip van (up to 8 pax)</td></tr>
-        <tr><td class="cat">⛵ Ferry</td><td class="amount">~75 SAR pp</td><td style="font-size:13px;color:var(--muted)">78.4 RM per person round trip</td></tr>
+        <tr><td class="cat">🏨 Accommodation</td><td class="amount">4,428 SAR</td><td style="font-size:13px;color:var(--muted)">SG: 941 SAR · Perhentian: 3,167 SAR · KL: ~321 SAR</td></tr>
+        <tr><td class="cat">🚢 Perhentian Van Transfer</td><td class="amount">~57 SAR</td><td style="font-size:13px;color:var(--muted)">360 RM round trip ÷ 6 pax</td></tr>
+        <tr><td class="cat">⛵ Ferry</td><td class="amount">~75 SAR</td><td style="font-size:13px;color:var(--muted)">78.4 RM per person round trip</td></tr>
         <tr><td class="cat">🍟 Food</td><td class="tbd">To be tracked</td><td style="font-size:13px;color:var(--muted)">—</td></tr>
-        <tr><td class="cat">🎟️ Entertainment</td><td class="tbd">To be tracked</td><td style="font-size:13px;color:var(--muted)">Gardens domes, Petronas TBC</td></tr>
+        <tr><td class="cat">🎟️ Entertainment</td><td class="amount">~134 SAR</td><td style="font-size:13px;color:var(--muted)">Gardens by the Bay: SAR 133.68/pp · BOOKED ✓</td></tr>
         <tr><td class="cat">🚇 Local Transport</td><td class="tbd">To be tracked</td><td style="font-size:13px;color:var(--muted)">MRT, Grab, KTM</td></tr>
       </tbody>
     </table>
     <div class="cost-total">
-      <span class="cost-total-label">Confirmed so far (per 2 pax)</span>
-      <span class="cost-total-val">~12,207 SAR</span>
+      <span class="cost-total-label">Confirmed so far (per person)</span>
+      <span class="cost-total-val">~8,045 SAR</span>
     </div>
   </div>
 
@@ -673,11 +672,14 @@
         <ul class="day-items">
           <li class="day-item"><div class="day-item-dot warn"></div><div><span class="warn-tag">⚠️</span> Leave hotel by <strong>05:00am</strong> — airport by 06:00 for 07:55 flight</div></li>
           <li class="day-item"><div class="day-item-dot"></div><div><span class="transport-pill">🚗 Grab</span> to Changi Airport (~25–30 min, ~SGD 25–30) — MRT doesn't run this early</div></li>
-          <li class="day-item"><div class="day-item-dot"></div><div>Fly Singapore → Kota Bharu · AirAsia · 07:55 → 12:05 (1 layover)</div></li>
-          <li class="day-item"><div class="day-item-dot"></div><div>At Kota Bharu airport: pre-booked private van to Besut Jetty <span class="transport-pill">🚐 Besutjetty.com</span>
+          <li class="day-item"><div class="day-item-dot"></div><div>Fly <strong>Singapore → Kuala Lumpur</strong> · AirAsia AK700 · 07:55 → 09:00 · T4 → KLIA T2</div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div>3hr 5min layover at KLIA T2 · Baggage checked through — no need to collect</div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div>Fly <strong>Kuala Lumpur → Kota Bharu</strong> · AirAsia AK6442 · 12:05 → 13:10 · Sultan Ismail Petra Airport</div></li>
+          <li class="day-item"><div class="day-item-dot"></div><div>At Kota Bharu airport (~13:10): pre-booked private van to Besut Jetty <span class="transport-pill">🚐 Besutjetty.com</span>
             <ul class="sub-list">
-              <li>Cost: 360 RM round trip (up to 8 pax)</li>
+              <li>Van: 360 RM round trip (up to 8 pax)</li>
               <li>Speedboat to island: 78.4 RM pp round trip</li>
+              <li>Expect to arrive at Bubu Resort mid-to-late afternoon</li>
             </ul>
           </div></li>
           <li class="day-item"><div class="day-item-dot free"></div><div>Arrive Bubu Resort — check in, settle in, enjoy the sunset, eat, rest</div></li>
@@ -1180,7 +1182,7 @@
     document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
     document.getElementById(id).classList.add('active');
     const tabs = document.querySelectorAll('.nav-tab');
-    const map = { overview: 0, itinerary: 1, actions: 2, food: 3, accommodation: 4, packing: 5 };
+    const map = { overview: 0, itinerary: 1, food: 2, accommodation: 3, packing: 4 };
     tabs[map[id]].classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
